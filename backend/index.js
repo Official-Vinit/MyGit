@@ -24,7 +24,9 @@ yargs(hideBin(process.argv))
         describe: 'Commit message',
         type: 'string'
     });
-}, commitRepo)
+}, (argv)=>{
+    commitRepo(argv.message);
+})
 .command('pull', 'Pull changes from the remote repository', {}, pullRepo)
 .command('push', 'Push changes to the remote repository', {}, pushRepo)
 .command('revert <commitId>', 'Revert to a specific commit', (yargs)=>{
